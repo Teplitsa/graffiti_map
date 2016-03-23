@@ -24,19 +24,19 @@
 <p>
 {% if graffiti.legal %}
 
-  <span class="label label-success"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Легальное</span> Данное граффити сделано легально. Время, прошедшее с момента загрузки: <strong>{{ graffiti.date_created|timesince }}</strong>.
+  <span class="label label-success"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Легальное</span> Скорее всего, данное граффити сделано легально. Время, прошедшее с момента загрузки: <strong>{{ graffiti.date_created|timesince }}</strong>.
 
 {% else %}
 
-  <span class="label label-warning"><span class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true"></span> Нелегальное</span> Данное граффити сделано нелегально. Время, прошедшее с момента загрузки: <strong>{{ graffiti.date_created|timesince }}</strong>. Возможно, оно уже уничтожено.
+  <span class="label label-warning"><span class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true"></span> Нелегальное</span> Скорее всего, данное граффити сделано нелегально. Время, прошедшее с момента загрузки: <strong>{{ graffiti.date_created|timesince }}</strong>. Возможно, оно уже уничтожено.
 
 {% endif %}
 </p>
 
 <h2>Координаты</h2>
 
-<p>Географическая широта: <span id="lat">{{ graffiti.lat }}</span></p>
-<p>Географическая долгота: <span id="lon">{{ graffiti.lon }}</span></p>
+<p>Географическая широта: <span id="lat">{{ graffiti.lat|stringformat:"f" }}</span></p>
+<p>Географическая долгота: <span id="lon">{{ graffiti.lon|stringformat:"f" }}</span></p>
 
 <button id="toggle" type="button" class="btn btn-primary">Показать карту</button>
 <br>
@@ -65,6 +65,6 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 
 
 {% block scripts %}
-  <script src="{% static 'js/yandex_map.js' %}" type="text/javascript"></script>
+  <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
   <script src="{% static 'js/graffiti_page_map.js' %}" type="text/javascript"></script>
 {% endblock %}

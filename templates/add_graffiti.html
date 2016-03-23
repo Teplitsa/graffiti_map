@@ -16,6 +16,7 @@
 <form action="{% url 'add_graffiti' %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <div id="map" style="width:auto; height:300px"></div>
+  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Добавьте объект на карте (любое место на планете), чтобы получить его координаты. Можете воспользоваться определением своих координат или поиском по конкретному адресу
   {% for field in form %}
     <div class="form-group">
         {{ field.errors }}
@@ -32,7 +33,7 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'js/yandex_map.js' %}" type="text/javascript"></script>
+<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="{% static 'js/add_map.js' %}" type="text/javascript"></script>
 
 
